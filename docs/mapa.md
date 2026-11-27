@@ -5,9 +5,12 @@
 - Início do timer do MVP: cerca de 10h34.
 - Feito: perguntas, repositório no GitHub com a `main` protegida, este mapa.
 - Perguntas fechadas por volta de 11h15 (cerca de 40 minutos).
-- Próxima: tarefa 1. Na nova conversa: ler `CLAUDE.md`, `CLAUDE.local.md`,
-  este mapa e `enunciado.md`; rodar `date`; mostrar o cartão da tarefa 1 e
-  esperar o "ok". Antes do código, rodar `uv run python verificar_llm.py`.
+- Tarefa 1 feita na branch `feat/chamada-llm`: o Gemini organiza a linha 21
+  com data, valor, entrega e a origem de cada campo certos.
+- Proposta para o "MVP do MVP", a confirmar: tarefa 3, tarefa 4 com a busca dentro dela (corte 1)
+  e, no fim, Docker e CI (tarefa 2).
+- Próxima: tarefa 3. Na nova conversa: ler `CLAUDE.md`, `CLAUDE.local.md`,
+  este mapa e `enunciado.md`; rodar `date`; mostrar o cartão e esperar o "ok".
 
 ## Ordem de corte (se o tempo apertar)
 
