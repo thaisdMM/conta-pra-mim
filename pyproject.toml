@@ -1,0 +1,44 @@
+[project]
+name = "desafio"
+version = "0.1.0"
+description = "Modelo de repositório para desafios práticos com LLM."
+readme = "README.md"
+authors = [
+    { name = "Thaís Moreira" }
+]
+requires-python = ">=3.14"
+dependencies = [
+    "google-genai>=3.6.1",
+    "pydantic>=2.14.4",
+    "python-dotenv>=1.2.4",
+]
+
+[project.scripts]
+desafio = "desafio:main"
+
+[build-system]
+requires = ["uv_build>=0.13.1,<0.14.0"]
+build-backend = "uv_build"
+
+[dependency-groups]
+dev = [
+    "mypy>=2.4.1",
+    "pytest>=9.2.0",
+    "ruff>=0.17.6",
+]
+
+[tool.ruff]
+line-length = 88
+
+[tool.ruff.lint]
+extend-select = ["I", "UP", "C4"]
+
+[tool.mypy]
+python_version = "3.14"
+files = ["src", "tests", "verificar_llm.py"]
+strict = true
+
+[tool.pytest]
+testpaths = ["tests"]
+addopts = ["--strict-markers", "-v"]
+markers = ["integracao: chama o LLM real; pulado sem chave"]
