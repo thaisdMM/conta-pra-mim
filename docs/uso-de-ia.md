@@ -12,3 +12,5 @@
 | Deixar o LLM marcar como "escrito" o cartão e as parcelas tirados de "credito 3x visa" | Recusada | Saíram de outra coluna, então são "deduzido"; a regra dizia "claro no lançamento" e se cruzava com a de "deduzido"; reescrevi com a coluna de cada campo e um exemplo, e o Gemini acertou |
 | Frete "0,00" deduzido numa venda na loja | Recusada | Um zero inventado esconde um frete esquecido; o frete só entra quando está escrito, e o Pydantic recusa frete deduzido |
 | Deixar o nome do modelo escrito no código, como padrão | Recusada | Configuração vem do `.env`; o programa avisa quando falta |
+| Mandar ao Gemini as datas sem ano e os formatos fáceis de deduzir | Recusada | Usar o LLM com cuidado e responsabilidade: o que é fácil de deduzir sai de regras fixas, sem gastar tokens; o ano 2026 vem da primeira e da última data da planilha |
+| Tratar datas escritas como mês/dia (`8/16/26`) como "data americana" | Recusada | A Maria é uma senhora que só entende a data brasileira; toda data gravada fica DD/MM/AAAA |

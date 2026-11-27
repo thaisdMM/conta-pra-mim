@@ -7,10 +7,16 @@
 - Perguntas fechadas por volta de 11h15 (cerca de 40 minutos).
 - Tarefa 1 feita na branch `feat/chamada-llm`: o Gemini organiza a linha 21
   com data, valor, entrega e a origem de cada campo certos.
-- Proposta para o "MVP do MVP", a confirmar: tarefa 3, tarefa 4 com a busca dentro dela (corte 1)
-  e, no fim, Docker e CI (tarefa 2).
-- Próxima: tarefa 3. Na nova conversa: ler `CLAUDE.md`, `CLAUDE.local.md`,
-  este mapa e `enunciado.md`; rodar `date`; mostrar o cartão e esperar o "ok".
+- Tarefa 1 na PR #2, esperando o CI e o merge.
+- Cerca de 10 minutos restantes do MVP. Plano decidido: só a tarefa 3,
+  reduzida. Ela responde ao critério "a solução trata o arquivo que ela já
+  tem?": a Maria abre a planilha organizada no Excel e busca com o Ctrl+F. A
+  página para registrar (tarefa 4), Docker e CI ficam como próximos passos na
+  apresentação.
+- Próxima: implementar a tarefa 3, sem novas perguntas (ver "Regras
+  decididas" e "Respostas da dona"). Na nova conversa: ler `CLAUDE.md`,
+  `CLAUDE.local.md`, este mapa, `enunciado.md` e `src/desafio/leitor_llm.py`;
+  rodar `date`; criar a branch a partir da `main` depois do merge da PR #2.
 
 ## Ordem de corte (se o tempo apertar)
 
@@ -84,6 +90,37 @@ Cada tarefa tem uma branch e uma PR, com o CI obrigatório.
   arquivo real e mostra quantas linhas foram para "Para conferir".
 - **Requisito da vaga:** dados estruturados e não estruturados.
 - **Tempo:** 15 min.
+
+#### Regras decididas
+
+- Usar o LLM com cuidado: o que é fácil de deduzir sai das regras fixas, sem
+  gastar tokens. O Gemini (`organizar_lancamento`, da tarefa 1) recebe só as
+  linhas que as regras não resolvem, com as vizinhas.
+- Toda data gravada fica no formato brasileiro DD/MM/AAAA, que é o que a
+  Maria entende. Nada de data americana na planilha organizada.
+- Data sem ano (`4/8`, `05/08`): se a primeira e a última data com ano da
+  planilha são de 2026, o ano é 2026. O campo fica "deduzido", com o motivo,
+  e entra em "Para conferir".
+- Regras fixas também para valores (`R$ 35`, `28,00` viram `35,00`, `28,00`),
+  pagamento (pix, dinheiro, debito, credito, fiado) e para "presencial" = loja.
+  Cartão e parcelas tirados de "como pagou" ficam "deduzido".
+- Vão ao Gemini: `ontem`, `hj`, `segunda`, data vazia, `12/3`, `12 de marco`,
+  `35+12 frete`, `maquinha`, `depois paga`, e o que mais as regras não
+  resolverem.
+- A linha totalmente vazia é ignorada. Linha repetida, compra de estoque e
+  devolução ficam na planilha e entram em "Para conferir".
+- Uma linha que der erro no Gemini entra em "Para conferir", e as outras
+  seguem.
+
+#### Respostas da dona (antes do código)
+
+- Datas como `8/16/26` e `8/6/26` (mês/dia/ano) são lidas como mês/dia por
+  regra fixa, sem o Gemini: `8/16/26` vira `16/08/2026`, "deduzido", e entra
+  em "Para conferir".
+- Instalar o openpyxl com `uv add openpyxl`: aprovado. Fazer na branch da
+  tarefa 3.
+- Se o tempo não der: só as regras de data e valor; o resto vai para "Para
+  conferir" (corte 2).
 
 ### Tarefa 4: página para registrar uma venda
 
